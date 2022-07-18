@@ -35,7 +35,7 @@ router.get('/getuser/:userId')
 
 //chat routes
 
-router.post('/chat', createChat);
+router.post('/chat', createChat)
 router.get("/chat/:userId", userChats);
 router.get("/chat/find/:firstId/:secondId", findChat);
 
