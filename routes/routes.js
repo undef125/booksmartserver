@@ -18,7 +18,7 @@ const storage = multer.diskStorage({
 const { postBook, getBooks, getBook,getFreeBooks,getUnacademicBooks,getSoldBooks, deleteBook, updateBook } = require('../controller/bookscontroller');
 const { loginUser, signUpUser,sendOTP } = require('../controller/usercontroller');
 const { createChat, userChats, findChat } = require("../controller/chatcontroller");
-const { addMessage, getMessages } = require("../controller/messagecontroller");
+const { addMessage, getMessages,getnothing } = require("../controller/messagecontroller");
 
 router.post('/postbook',[multer({storage: storage}).single('image'), authenticateToken], postBook);  //sellbook
 router.get('/getbooks/:key',authenticateToken, getBooks);                                           //get searched books
@@ -43,5 +43,9 @@ router.get("/chat/find/:firstId/:secondId", findChat);
 
 router.post('/msg/', addMessage);
 router.get('/msg/:chatId', getMessages)
+
+
+router.get('/', getnothing)
+
 
 module.exports = router;

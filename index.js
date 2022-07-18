@@ -28,10 +28,6 @@ app.use('/uploads', express.static('./uploads')); //to use the images url from u
 let db = connectDB();
 
 //test apis
-app.get("/", async(req,res) => {
-    res.send("hello from backend!!");
-})
-
 
 
 //listening port

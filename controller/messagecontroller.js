@@ -29,4 +29,8 @@ const getMessages = async(req,res) => {
     }
 };
 
-module.exports = { addMessage, getMessages};
+const getnothing = async(req,res) => {
+    return res.status(200).json("welcome to booksmart !!");
+}
+
+module.exports = { addMessage, getMessages,getnothing};
