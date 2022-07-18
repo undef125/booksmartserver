@@ -7,7 +7,7 @@ const bodyParser = require("body-parser");
 
 //middlewares
 
-const whitelist = ["http://localhost:3000/"]
+const whitelist = ["http://localhost:3000/", credentials: true,]
 const corsOptions = {
   origin: function (origin, callback) {
     if (!origin || whitelist.indexOf(origin) !== -1) {
