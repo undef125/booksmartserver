@@ -22,6 +22,8 @@ const bodyParser = require("body-parser");
 var corsOptions = {
   origin: 'https://booksmartnepal.netlify.app',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  Headers: 'X-Requested-With,content-type',
+  Credential: true,
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
 
