@@ -7,25 +7,28 @@ const bodyParser = require("body-parser");
 
 //middlewares
 
-// const whitelist = ["http://localhost:3000", "https://booksmartnepal.netlify.app"]
-// const corsOptions = {
-//   origin: function (origin, callback) {
-//     if (!origin || whitelist.indexOf(origin) !== -1) {
-//       callback(null, true)
-//     } else {
-//       callback(new Error("Not allowed by CORS"))
-//     }
-//   },
-//   credentials: true,
-// }
+const allowList = ["https://booksmartnepal.netlify.app"]
+const corsOptions = {
+  origin: function (origin, callback) {
+    // Log and check yourself if the origin actually matches what you've defined in the allowList array
+    console.log(origin);
 
-var corsOptions = {
-  origin: 'https://booksmartnepal.netlify.app',
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  Headers: 'X-Requested-With,content-type',
-  Credential: true,
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+    if (allowList.indexOf(origin) !== -1 || !origin) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  },
+  credentials: true,
 }
+
+// var corsOptions = {
+//   origin: 'https://booksmartnepal.netlify.app',
+//   methods: ['GET', 'POST', 'PUT', 'DELETE'],
+//   Headers: 'X-Requested-With,content-type',
+//   Credential: true,
+//   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+// }
 
 app.use(cors(corsOptions));
 app.use(express.json());
