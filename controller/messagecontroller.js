@@ -30,7 +30,7 @@ const getMessages = async(req,res) => {
 };
 
 const getnothing = async(req,res) => {
-    return res.status(200).json("welcome to booksmart from heroku hehe !!");
+    return res.status(200).json("Hello from bit believers!!");
 }
 
 module.exports = { addMessage, getMessages,getnothing};
