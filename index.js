@@ -34,7 +34,7 @@ const bodyParser = require("body-parser");
 
 app.use(
   cors({
-    origin: ["https://booksmartnepal.netlify.app"],
+    origin: ["https://booksmartnepal.netlify.app","https://booksmartnepal.netlify.app/"],
     methods: ["GET", "POST", "DELETE"],
     credentials: true,
     origin: true,
