@@ -47,7 +47,7 @@ app.use(bodyParser.json({extended: true}));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use('/uploads', express.static('./uploads')); //to use the images url from upload folder
 
-let db = connectDB();
+let db = await connectDB();
 
 //test apis
 
