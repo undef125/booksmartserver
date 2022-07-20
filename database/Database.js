@@ -6,9 +6,9 @@ const dbUrl = `mongodb://${process.env.MONGO_USERNAME}:${process.env.MONGO_PASSW
 const ConnectDB = async() => {
     try {
         await mongoose.connect(dbUrl, { useNewUrlParser: true});
-        console.log("database connected successfully!!");
+        alert("database connected successfully!!");
     } catch (error) {
-        console.log("Error while connecting: " + error);
+        alert("Error while connecting: " + error);
     }
 }
 module.exports = ConnectDB;  //exporting connection function

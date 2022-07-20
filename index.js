@@ -5,6 +5,8 @@ const router = require("./routes/routes");
 const cors = require('cors');
 const bodyParser = require("body-parser");
 
+let db = connectDB();
+
 //middlewares
 
 // const allowList = ["https://booksmartnepal.netlify.app"]
@@ -47,7 +49,6 @@ app.use(bodyParser.json({extended: true}));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use('/uploads', express.static('./uploads')); //to use the images url from upload folder
 
-let db = await connectDB();
 
 //test apis
 
