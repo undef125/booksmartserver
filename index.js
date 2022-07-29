@@ -57,6 +57,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/uploads", express.static("./uploads")); //to use the images url from upload folder
 
 //listening port
-// app.listen(process.env.PORT || 5000);
+app.listen(process.env.PORT || 5000);        //production
 
-server.listen(5000);
+// server.listen(5000);                            //development
