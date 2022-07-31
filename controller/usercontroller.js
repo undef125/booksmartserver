@@ -140,8 +140,9 @@ const loginUser = async (req, res) => {
     }
 };
 
-const getUsers = () => {
-
+const getUsers = async(req,res) => {
+    let user = await User.findOne({ _id: req.params.userid});
+    return res.status(200).send(user);
 }
 
 const delRefToken = async(req,res) => {
@@ -149,4 +150,4 @@ const delRefToken = async(req,res) => {
 }
 
 
-module.exports = { loginUser, signUpUser, sendOTP, delRefToken };
+module.exports = { loginUser, signUpUser, sendOTP, delRefToken , getUsers};

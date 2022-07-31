@@ -16,7 +16,7 @@ const storage = multer.diskStorage({
 
 
 const { postBook, getBooks, getBook,getFreeBooks,getUnacademicBooks,getSoldBooks, deleteBook, updateBook } = require('../controller/bookscontroller');
-const { loginUser, signUpUser,sendOTP } = require('../controller/usercontroller');
+const { loginUser, signUpUser,sendOTP, getUsers } = require('../controller/usercontroller');
 const { createChat, userChats, findChat } = require("../controller/chatcontroller");
 const { addMessage, getMessages,getnothing } = require("../controller/messagecontroller");
 
@@ -31,7 +31,7 @@ router.post('/signup', signUpUser);                                             
 router.post('/getotp', sendOTP);     
 router.delete('/delete/:id', authenticateToken, deleteBook);                                                            //get otp api
 router.put('/update/:id', [multer({storage: storage}).single('image'), authenticateToken], updateBook);                                                            //get otp api
-router.get('/getuser/:userId')
+router.get('/getuser/:userid', getUsers);
 
 //chat routes
 
