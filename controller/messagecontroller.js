@@ -7,7 +7,6 @@ const addMessage = async(req, res) => {
         senderId,
         text,
     });
-    console.log(message)
     try {
         const result = await message.save();
         return res.status(200).json(result);
