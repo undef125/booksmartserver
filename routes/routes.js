@@ -20,7 +20,7 @@ const { loginUser, signUpUser,sendOTP, getUsers } = require('../controller/userc
 const { createChat, userChats, findChat } = require("../controller/chatcontroller");
 const { addMessage, getMessages,getnothing } = require("../controller/messagecontroller");
 
-router.post('/postbook',[multer({storage: storage}).single('image')], postBook);  //sellbook
+router.post('/postbook',[multer({storage: storage}).single('image'),authenticateToken], postBook);  //sellbook
 router.get('/getbooks/:key',authenticateToken, getBooks);                                           //get searched books
 router.get('/getfreebooks',authenticateToken, getFreeBooks);                                        //get free books
 router.get('/unacademicbooks',authenticateToken, getUnacademicBooks);                               //get unacademic books
