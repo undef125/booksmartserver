@@ -121,6 +121,7 @@ const signUpUser = async (req, res) => {
 
 //login user
 const loginUser = async (req, res) => {
+    console.log(req)
     let user = await User.findOne({ email: req.body.email });
     if (!user) {
         return res.status(400).send({ message: "Invalid Email" });

@@ -52,7 +52,9 @@ let db = connectDB();
 const corsOptions = {
   origin: [
     "https://booksmartnepal.netlify.app/",
+    "https://booksmartnepal.netlify.app",
     "http://localhost:3000/",
+    "http://localhost:3000",
   ],
   method: ["GET", "POST", "DELETE", "PUT"],
   origin: true,
