@@ -52,9 +52,7 @@ let db = connectDB();
 const corsOptions = {
   origin: [
     "https://booksmartnepal.netlify.app/",
-    "https://booksmartnepal.netlify.app",
     "http://localhost:3000/",
-    "http://localhost:3000",
   ],
   method: ["GET", "POST", "DELETE", "PUT"],
   origin: true,
@@ -63,7 +61,7 @@ const corsOptions = {
 
 app.use("/", cors(corsOptions), router);
 app.use(express.json());
-// app.use("/", router);
+app.use("/", router);
 app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/uploads", express.static("./uploads")); //to use the images url from upload folder
