@@ -121,23 +121,27 @@ const signUpUser = async (req, res) => {
 
 //login user
 const loginUser = async (req, res) => {
-    console.log(req)
-    let user = await User.findOne({ email: req.body.email });
-    if (!user) {
-        return res.status(400).send({ message: "Invalid Email" });
-    } else {
-        let passMatch = await bcrypt.compare(req.body.password, user.password);
-        if (passMatch) {
-            const accessToken = jwt.sign(user.toJSON(), process.env.ACCESS_SECRET_KEY, {expiresIn: '90m'});
-            const refreshToken = jwt.sign(user.toJSON(), process.env.REFRESH_SECRET_KEY)
-
-            // const newToken = new token({token: refreshToken});
-            // await newToken.save();
-            // return res.status(200).send({ message: "login success" , accessToken: accessToken,refreshToken:refreshToken, name: user.name, email: user.email});
-            return res.status(200).send({ message: "login success" , accessToken: accessToken, name: user.name, email: user.email, id:user._id});
+    try {
+        let user = await User.findOne({ email: req.body.email });
+        if (!user) {
+            return res.status(400).send({ message: "Invalid Email" });
         } else {
-            return res.status(400).send({ message: "Invalid Password" });
+            let passMatch = await bcrypt.compare(req.body.password, user.password);
+            console.log(passMatch)
+            if (passMatch) {
+                const accessToken = jwt.sign(user.toJSON(), process.env.ACCESS_SECRET_KEY, {expiresIn: '90m'});
+                // const refreshToken = jwt.sign(user.toJSON(), process.env.REFRESH_SECRET_KEY)
+    
+                // const newToken = new token({token: refreshToken});
+                // await newToken.save();
+                // return res.status(200).send({ message: "login success" , accessToken: accessToken,refreshToken:refreshToken, name: user.name, email: user.email});
+                return res.status(200).json({ message: "login success" , accessToken: accessToken, name: user.name, email: user.email, id:user._id});
+            } else {
+                return res.status(400).send({ message: "Invalid Password" });
+            }
         }
+    } catch (err) {
+        return res.status(400).send({ message: err });
     }
 };
 
