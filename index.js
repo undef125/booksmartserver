@@ -60,4 +60,4 @@ app.use("/uploads", express.static("./uploads")); //to use the images url from u
 //listening port
 // app.listen(process.env.PORT || 5000);        //production
 
-server.listen(5000);                            //development
+server.listen(process.env.PORT || 5000);                            //development
