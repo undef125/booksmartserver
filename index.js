@@ -43,8 +43,8 @@ let db = connectDB();
 //middlewares
 app.use(
   cors({
-    // origin: ["https://booksmartnepal.netlify.app"],                   //production
-    origin: ["http://localhost:3000"],                                   //development
+    origin: ["https://booksmartnepal.netlify.app"],                   //production
+    // origin: ["http://localhost:3000"],                                   //development
     methods: ["GET", "POST", "DELETE"],
     credentials: true,
     origin: true,
