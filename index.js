@@ -49,17 +49,19 @@ const http = require("http");
 let db = connectDB();
 
 //middlewares
-app.use(
-  cors({
-    origin: ["https://booksmartnepal.netlify.app","http://localhost:3000"], //production
-    methods: ["GET", "POST", "DELETE"],
-    credentials: true,
-    origin: true,
-  })
-);
+const corsOptions = {
+  origin: [
+    "https://booksmartnepal.netlify.app/",
+    "http://localhost:3000/",
+  ],
+  method: ["GET", "POST", "DELETE", "PUT"],
+  origin: true,
+  credentials: true,
+};
 
+app.use("/", cors(corsOptions), router);
 app.use(express.json());
-app.use("/", router);
+// app.use("/", router);
 app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/uploads", express.static("./uploads")); //to use the images url from upload folder
