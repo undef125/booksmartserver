@@ -9,6 +9,14 @@ const http = require("http");
 
 // const server = http.createServer(app);
 
+// let corsOptions = {
+//   // origin: ["http://localhost:3000"], //development
+//   origin: ["https://booksmartnepal.netlify.app"], //production
+//   methods: ["PUT", "GET", "POST", "DELETE"],
+//   credentials: true,
+//   origin: true,
+// };
+
 // const io = new Server(server, {
 //   cors: {
 //     // origin: ["http://localhost:3000"],                         //development
@@ -43,8 +51,7 @@ let db = connectDB();
 //middlewares
 app.use(
   cors({
-    origin: ["https://booksmartnepal.netlify.app"],                   //production
-    // origin: ["http://localhost:3000"],                                   //development
+    origin: ["https://booksmartnepal.netlify.app","http://localhost:3000"], //production
     methods: ["GET", "POST", "DELETE"],
     credentials: true,
     origin: true,
@@ -61,4 +68,4 @@ app.use("/uploads", express.static("./uploads")); //to use the images url from u
 // app.listen(process.env.PORT || 5000);        //production
 
 // server.listen(process.env.PORT || 5000);                            //development
-app.listen(process.env.PORT || 5000);                            //development
+app.listen(process.env.PORT || 5000); //development
