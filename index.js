@@ -43,8 +43,8 @@ let db = connectDB();
 //middlewares
 app.use(
   cors({
-    origin: ["https://booksmartnepal.netlify.app"],                   //production
-    // origin: ["http://localhost:3000"],                                    //development
+    // origin: ["https://booksmartnepal.netlify.app"],                   //production
+    origin: ["http://localhost:3000"],                                   //development
     methods: ["GET", "POST", "DELETE"],
     credentials: true,
     origin: true,
@@ -58,6 +58,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/uploads", express.static("./uploads")); //to use the images url from upload folder
 
 //listening port
-app.listen(process.env.PORT || 5000);        //production
+// app.listen(process.env.PORT || 5000);        //production
 
-// server.listen(5000);                            //development
+server.listen(5000);                            //development
