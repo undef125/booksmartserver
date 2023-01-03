@@ -1,9 +1,6 @@
 {
   "name": "serverbooksmart",
   "version": "1.0.0",
-  "engines": {
-    "node": "16.15.0"
-  },
   "description": "server for second hand books and note selling web app ",
   "main": "index.js",
   "scripts": {
