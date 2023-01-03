@@ -4,8 +4,8 @@ const connectDB = require("./database/Database"); //database connection
 const router = require("./routes/routes");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const { Server } = require("socket.io");
-const http = require("http");
+// const { Server } = require("socket.io");
+// const http = require("http");
 
 // const server = http.createServer(app);
 
