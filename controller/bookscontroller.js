@@ -1,7 +1,6 @@
 const Book = require("../models/bookmodel");
 const mongoose = require("mongoose");
 const fs = require("fs");
-const { v4: uuidv4 } = require("uuid");
 
 const postBook = async (req, res) => {
   try {
