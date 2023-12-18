@@ -59,6 +59,18 @@ const sendOTP = async (req, res) => {
     email: req.body.email,
   });
 
+  const message = {
+    // to: "sabinathapakshettri2001@gmail.com",
+    to: [req.body.email],
+    // from: 'psycoderhertz@gmail.com',
+    from: {
+      name: "Booksmart",
+      email: process.env.OUR_EMAIL,
+    },
+    subject: "Book-S-Mart SignUp OTP",
+    text: `Your otp verification code is ${otp}. Thank you from our team Bit Believers!`,
+  };
+
   //checking if username already exist
   let usernameCheck = await User.findOne({ name: req.body.name });
   if (usernameCheck) {
@@ -71,7 +83,7 @@ const sendOTP = async (req, res) => {
   //delete old otp if exists
   await OTPv.deleteOne({ email: req.body.email });
   try {
-    sendMail(req.body.email, otp);
+    let resp = await sgMail.send(message);
     res.send("succeed");
     await storeOTP.save();
   } catch (err) {
